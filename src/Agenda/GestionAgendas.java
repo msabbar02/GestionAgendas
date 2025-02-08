@@ -1,6 +1,7 @@
 package Agenda;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class GestionAgendas {
@@ -41,13 +42,13 @@ public class GestionAgendas {
     }
 
     /*
-    * añadir un nota nueve si existe
+    * añadir una nota nueve si existe
     * con la clase Scanner
     * */
      public void addNota(){
-         System.out.println("Introduce el nombre de la nota");
+         System.out.print("Introduce el nombre de la nota: ");
          String nombre = sc.nextLine();
-         System.out.println("Ahora la descripcion:");
+         System.out.print("Ahora la descripcion: ");
          String desc = sc.nextLine();
 
          boolean existe = false;
@@ -59,78 +60,83 @@ public class GestionAgendas {
          }
 
          if (existe) {
-             System.out.println("Este nota ya existe.");
+             System.out.println("\u001B[31mEste nota ya existe.\u001B[0m");
          } else {
              agenda.add(new Agenda(nombre, desc));
-             System.out.println("Listo (:");
+             System.out.println("\u001B[32mListo (:\u001B[0m");
          }
      }
 
     /*
-    * eliminar un nota atraves de su nombre como parametro de entrada
+    * eliminar una nota a través de su nombre como parametro de entrada
     * luego resta el index de la arraylist
     *
     * */
      public void eliminarNota(){
-         System.out.println("nombre de la nota que queries eliminar:");
+         System.out.print("nombre de la nota que queries eliminar: ");
          String nombreAntiguo = sc.nextLine();
-         for (int i = 0; i < agenda.size(); i++) {
-             if (agenda.get(i).getNombre().equals(nombreAntiguo)) {
-                 agenda.remove(i);
-                 i--;
-                 System.out.println("listo (:");
-             }else {
-                 System.out.println("este nombre no existe.");
+         Iterator<Agenda> iterador = agenda.iterator();
+         boolean eliminado = false;
+         while (iterador.hasNext()){
+             Agenda elemento = iterador.next();
+             if (elemento.getNombre().equals(nombreAntiguo)) {
+                 iterador.remove();
+                 eliminado = true;
              }
+         }
+
+         if (eliminado){
+             System.out.println("\u001B[32mListo (:\u001B[0m");
+         }else {
+             System.out.println("\u001B[31meste nombre no existe.\u001B[0m");
          }
      }
 
      /*
-     * modificar el nombre del la nota usando clase Scanner
+     * modificar el nombre de la nota usando clase Scanner
      * si no eiste te saldra mensaje de error
      * */
      public void modificarNombre(){
-         System.out.println("nombre de la nota que queries modificar:");
+         System.out.println("nombre de la nota que queries modificar: ");
          String nombreAntiguo = sc.nextLine();
          for (int i = 0; i < agenda.size(); i++) {
              if (agenda.get(i).getNombre().equals(nombreAntiguo)){
-                 System.out.print("introduce el nombre nuevo:");
+                 System.out.print("introduce el nombre nuevo: ");
                  String nombreNueve = sc.nextLine();
                  agenda.get(i).setNombre(nombreNueve);
-                 System.out.println("listo (:");
+                 System.out.println("\u001B[32mListo (:\u001B[0m");
              }else {
-                 System.out.println("este nombre no existe.");
+                 System.out.println("\u001B[31meste nombre no existe.\u001B[0m");
              }
          }
      }
 
      /*
-     * modificacion de la decrpcion del nota usando su nombre para buscarla
+     * modificacion de la decrpcion de la nota usando su nombre para buscarla
      * */
     public void modificarDescripcon(){
-        System.out.println("nombre de la nota que queries modificar:");
+        System.out.println("nombre de la nota que queries modificar: ");
         String nombreAntiguo =sc.nextLine();
         for (int i = 0; i < agenda.size(); i++) {
             if (agenda.get(i).getNombre().equals(nombreAntiguo)){
-                System.out.print("ahora la descrpcion que quieres:");
+                System.out.print("ahora la descrpcion que quieres: ");
                 String nombreNueve = sc.nextLine();
                 agenda.get(i).setDescripcion(nombreNueve);
-                System.out.println("listo (:");
+                System.out.println("\u001B[32mListo (:\u001B[0m");
             }else {
-                System.out.println("este nombre no existe.");
+                System.out.println("\u001B[31meste nombre no existe.\u001B[0m");
             }
         }
     }
 
     public void mostrar() {
         if (agenda.isEmpty()){
-            System.out.println("no hay notaas en la agenda");
+            System.out.println("no hay notas en la agenda");
         }else {
             for (Agenda agenda1 : agenda){
                 System.out.println(agenda1);
             }
         }
-
     }
 
 

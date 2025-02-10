@@ -1,8 +1,11 @@
 package Biblioteca;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+import javax.print.DocFlavor;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Biblioteca {
     ArrayList<Libro> libros;
@@ -134,8 +137,54 @@ public class Biblioteca {
             System.out.println("la biblioteca esta vacia.");
             return;
         }
+        System.out.printf("%-30s | %-30s | %10s%n", "Título", "Autor", "Año de Publicación");
+        System.out.println("--------------------------------------------------------------------------------------");
         for (Libro libro : libros){
             System.out.println(libro);
         }
+    }
+
+
+
+    /*
+    * aqui esta algunos metodos mas avanzados
+    * */
+
+
+    public void ordenarPorAnyo(){
+        Collections.sort(libros,Comparator.comparingInt(l -> l.getAnyoPublicacion()));
+        System.out.println("+++++++++++++ libros ordenados por año");
+        System.out.printf("%-30s | %-30s | %10s%n", "Título", "Autor", "Año de Publicación");
+        System.out.println("--------------------------------------------------------------------------------------");
+        for (Libro libro : libros){
+            System.out.println(libro);
+        }
+    }
+
+    public void ordenarPorTitulo(){
+        Collections.sort(libros,Comparator.comparing(l -> l.getTitulo()));
+        System.out.printf("%-30s | %-30s | %10s%n", "Título", "Autor", "Año de Publicación");
+        System.out.println("--------------------------------------------------------------------------------------");
+        for (Libro libro : libros){
+            System.out.println(libro);
+        }
+    }
+
+    public void leerFichero(){
+       try(BufferedReader br = new BufferedReader(new FileReader("src/Biblioteca/ejemplo.txt"))){
+           String linea;
+           while ((linea = br.readLine()) != null){
+               String [] datos = linea.split(", ");
+               if (datos.length == 3){
+                   String titulo = datos[0];
+                   String autor = datos[1];
+                   int ano = Integer.parseInt(datos[2]);
+                   libros.add(new Libro(titulo,autor,ano));
+               }
+           }
+           System.out.println("Libros cargados desde el archivo.");
+       }catch (IOException e){
+           System.out.println("Error al leer el archivo: "+ e.getMessage());
+       }
     }
 }

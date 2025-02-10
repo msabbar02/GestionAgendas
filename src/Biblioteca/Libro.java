@@ -38,8 +38,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Titulo: " + titulo +
-                " Autor: " + autor +
-                " Año Publicacion: " + anyoPublicacion ;
+        return String.format("%-30s | %30s | %10d", titulo, autor, anyoPublicacion);
     }
+
 }

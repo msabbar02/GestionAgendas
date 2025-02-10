@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
+        biblioteca.leerFichero();
         Scanner sc = new Scanner(System.in);
         int opcion;
 
@@ -16,7 +17,9 @@ public class Main {
             System.out.println("4. Actualizar año de publicación");
             System.out.println("5. Eliminar libro");
             System.out.println("6. Mostrar todos los libros");
-            System.out.println("7. Salir");
+            System.out.println("7. Ordenar Por ano");
+            System.out.println("8. Ordenar Por titulo");
+            System.out.println("9. Salir");
             System.out.print("Elige una opción: ");
 
             while (!sc.hasNextInt()) {  // Evita errores si el usuario ingresa texto en vez de número
@@ -55,12 +58,18 @@ public class Main {
                     biblioteca.mostrar();
                     break;
                 case 7:
+                    biblioteca.ordenarPorAnyo();
+                    break;
+                case 8:
+                    biblioteca.ordenarPorTitulo();
+                    break;
+                case 9:
                     System.out.println("¡Saliendo del sistema de biblioteca! 👋");
                     break;
                 default:
                     System.out.println("⚠ Opción inválida, intenta de nuevo.");
             }
-        } while (opcion != 7);
+        } while (opcion != 9);
 
         sc.close();
     }

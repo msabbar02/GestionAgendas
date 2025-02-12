@@ -9,10 +9,11 @@ import java.util.stream.Collectors;
 
 public class Biblioteca {
     ArrayList<Libro> libros;
-    Scanner sc = new Scanner(System.in);
+    Scanner sc;
 
     public Biblioteca(){
         this.libros = new ArrayList<>();
+        this.sc  = new Scanner(System.in);
     }
     /*
     * agregar libro usando clase scanner
@@ -155,7 +156,7 @@ public class Biblioteca {
         Collections.sort(libros,Comparator.comparingInt(l -> l.getAnyoPublicacion()));
         System.out.println("+++++++++++++ libros ordenados por año");
         System.out.printf("%-30s | %-30s | %10s%n", "Título", "Autor", "Año de Publicación");
-        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------");
         for (Libro libro : libros){
             System.out.println(libro);
         }
@@ -164,7 +165,7 @@ public class Biblioteca {
     public void ordenarPorTitulo(){
         Collections.sort(libros,Comparator.comparing(l -> l.getTitulo()));
         System.out.printf("%-30s | %-30s | %10s%n", "Título", "Autor", "Año de Publicación");
-        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------");
         for (Libro libro : libros){
             System.out.println(libro);
         }

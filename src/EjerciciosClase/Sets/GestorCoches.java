@@ -39,7 +39,6 @@ public class GestorCoches {
         }
     }
     public void mostrar(){
-
         for (Coche coche: cocheHashSet){
             System.out.println(coche);
         }

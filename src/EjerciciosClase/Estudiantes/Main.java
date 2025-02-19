@@ -1,7 +1,4 @@
-package EjerciciosClase;
-
-import java.util.ArrayList;
-import java.util.Iterator;
+package EjerciciosClase.Estudiantes;
 
 public class Main {
     public static void main(String[] args) {

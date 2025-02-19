@@ -1,4 +1,4 @@
-package EjerciciosClase.Sets;
+package EjerciciosClase.Sets.Coches;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,6 +7,7 @@ public class Main {
         gestorCoches.mostrar2();
         System.out.println();
         gestorCoches.recorrer();
+        System.out.println(" coche set");
         gestorCoches.mostrar();
     }
 }

@@ -1,4 +1,5 @@
-package EjerciciosClase.Sets;
+package EjerciciosClase.Sets.Coches;
+
 import java.util.*;
 
 public class GestorCoches {
@@ -9,13 +10,14 @@ public class GestorCoches {
         this.coches = new ArrayList<>();
         this.cocheHashSet = new HashSet<>();
     }
+
     public void add(){
         coches.add(new Coche("ABC-123"));
         coches.add(new Coche("XYZ-789"));
         coches.add(new Coche("LMN-456"));
-        coches.add(new Coche("ABC-123")); // Duplicada
+        coches.add(new Coche("ABC-123"));
         coches.add(new Coche("JKL-987"));
-        coches.add(new Coche("XYZ-789")); // Duplicada
+        coches.add(new Coche("XYZ-789"));
         coches.add(new Coche("PQR-654"));
         coches.add(new Coche("LMN-456"));
     }
@@ -30,14 +32,15 @@ public class GestorCoches {
         Iterator<Coche> cocheIterator = coches.iterator();
         while (cocheIterator.hasNext()){
             Coche coche = cocheIterator.next();
-            if (random.nextBoolean()){
+            if (random.nextBoolean()){ /* 50%*/
                 cocheHashSet.add(coche);
-                System.out.println("el coche con matricula "+ coche +" ha pasdo");
+                System.out.println("el coche con "+ coche +" ha pasdo");
             }else {
-                System.out.println("el coche con matricula "+ coche +" no ha pasado.");
+                System.out.println("el coche con "+ coche +" no ha pasado.");
             }
         }
     }
+
     public void mostrar(){
         for (Coche coche: cocheHashSet){
             System.out.println(coche);

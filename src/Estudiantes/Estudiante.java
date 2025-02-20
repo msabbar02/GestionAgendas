@@ -1,4 +1,4 @@
-package EjerciciosClase.Estudiantes;
+package Estudiantes;
 
 public class Estudiante {
 

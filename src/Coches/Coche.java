@@ -1,4 +1,4 @@
-package EjerciciosClase.Sets.Coches;
+package Coches;
 
 import java.util.Objects;
 

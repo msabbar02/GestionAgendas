@@ -1,4 +1,4 @@
-package EjerciciosClase.Estudiantes;
+package Estudiantes;
 
 public class Main {
     public static void main(String[] args) {

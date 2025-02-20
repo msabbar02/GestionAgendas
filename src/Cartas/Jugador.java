@@ -1,4 +1,4 @@
-package EjerciciosClase.Sets.Cartas;
+package Cartas;
 import java.util.ArrayList;
 import java.util.HashSet;
 
